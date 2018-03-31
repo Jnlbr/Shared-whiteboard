@@ -60,6 +60,7 @@ function connect() {
 		}
 		canvas.removeEventListener('mouseup', onOut);
 		canvas.removeEventListener('mousedown', onDown);
+		deleteList();
 		console.log('LEAVE')
 	};
 	ws.onerror = (e) => {
@@ -83,10 +84,14 @@ function connect() {
 			}			
 			case 'join': {
 				console.log(message);
+				deleteList();
+				refreshList(message);
 				break;
 			}
 			case 'leave': {
 				console.log(message);
+				deleteList();
+				refreshList(message);
 				break;
 			}
 			case 'denied': {
@@ -116,3 +121,17 @@ function closeWS() {
 	ws.close();
 }
 
+refreshList = (message) =>{
+	message.players.forEach(player => {
+		var li = document.createElement('li');
+		li.innerHTML = player.username + `&nbsp;&nbsp;<span style="background-color: #${player.color} ; box-shadow: 0 1px 5px rgba(83, 105, 199, 0.5), 0 1px 15px rgba(0, 0, 0, 0.5); border-radius: 60px;">&nbsp;&nbsp;</span>`;
+		$('lista').appendChild(li);
+	});
+}
+
+deleteList = () =>{
+	var lista = $('lista');
+	for (let index = 0; index < lista.children.length; index++) {
+		lista.removeChild(lista.children[index]);
+	}
+}
