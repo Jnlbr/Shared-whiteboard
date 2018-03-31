@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	<style>
+		/* .item1 {
+			grid-area:header;
+		}
+		.item2 {
+			grid-area:list;
+		}
+		.item3 {
+			grid-area:main;
+		} */
+
+		.grid-container {
+			display: grid;
+			grid-template-columns: 50% 50%;
+			grid-template-rows: auto;
+
+		}
+	</style>
+</head>
+
+<body>
+	<div class="grid-container">
+		<div class="item1">
+			<input type="text" id="username" /> Color:
+			<input id="picker" class="jscolor">
+			<button onclick='connect()'>Connect</button>
+			<button onclick='closeWS()'>Disconnect</button>
+			<h3>MESSAGES:</h3>
+			<div id="inbox"></div>
+			<div>
+			</div>
+		</div>
+		<div class="item2">
+			<ul id="lista" style="list-style-type: square">
+				<!-- Usuarios conectados LI -->
+			</ul>
+		</div>
+		<div class="item3">
+			<canvas style="background-color:#bbbbbb" id="canvas" width="1280" height="600"> </canvas>
+			<br>
+			<button onclick="clearBoard()">Clear</button>
+		</div>
+
+	</div>
+
+	<script type="text/javascript" src="scripts/App.js"></script>
+	<script type="text/javascript" src="scripts/jscolor.js"></script>
+</body>
+
+</html>
