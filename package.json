@@ -1,0 +1,8 @@
+{
+  "name": "SharedBoard",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Fabioepb/SharedBoard.git",
+  "author": "Jean Lambert && Fabio Pineda",
+  "license": "MIT"
+}
