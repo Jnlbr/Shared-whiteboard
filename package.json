@@ -1,8 +1,8 @@
 {
-  "name": "SharedBoard",
+  "name": "SharedWhiteboard",
   "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/Fabioepb/SharedBoard.git",
+  "main": "index.html",
+  "repository": "",
   "author": "Jean Lambert && Fabio Pineda",
   "license": "MIT"
 }
