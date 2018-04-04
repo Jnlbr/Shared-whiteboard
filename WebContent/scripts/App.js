@@ -16,25 +16,34 @@ getUsername = () => {
 
 // Defaults
 const canvas = $('canvas');
-
+const colaborators = $('col');
+const cvs = canvas.getContext('2d');
+const cs = colaborators.getContext('2d');
 // Listeners
 onMove = (e) => {
 	posx = e.pageX - canvas.offsetLeft;
 	posy = e.pageY - canvas.offsetTop;
+	cvs.strokeStyle = '#' + color;
+	cvs.lineWidth = 4;
+	cvs.lineTo(posx, posy);
+	cvs.stroke();
 	sendCanvas(posx, posy, color);
 }
 onOut = (e) => {
+	cvs.closePath();
 	canvas.removeEventListener('mousemove', onMove);
 	canvas.removeEventListener('mouseout', onOut);
 	sendCanvas(posx, posy, color, false);
 }
 onDown = (e) => {
+	cvs.beginPath();
 	canvas.addEventListener('mousemove', onMove);
 	canvas.addEventListener('mouseout', onOut);
 }
 
 function clearBoard() {
-	c.clearRect(0, 0, 1280, 600)
+	cvs.clearRect(0, 0, 1280, 600);
+	cs.clearRect(0, 0, 1280, 600);
 }
 
 // WEB-SOCKET
@@ -47,7 +56,6 @@ function connect() {
 	color = getColor();
 	username = getUsername();
 	ws = new WebSocket('ws://localhost:8080/ArrozConLeche/sharedBoard/' + username + '/' + color);
-	let cs = canvas.getContext('2d');
 	cs.beginPath();
 
 	ws.onopen = (e) => {
@@ -119,19 +127,20 @@ function sendCanvas(x, y, color, down = true) {
 
 function closeWS() {
 	ws.close();
-}
+} 
 
-refreshList = (message) =>{
+function refreshList(message) {
+	let ul = document.createElement('ul');
+	ul.setAttribute('id', 'lista');
+	ul.setAttribute('style', 'list-style-type: square');
 	message.players.forEach(player => {
-		var li = document.createElement('li');
+		let li = document.createElement('li');
 		li.innerHTML = player.username + `&nbsp;&nbsp;<span style="background-color: #${player.color} ; box-shadow: 0 1px 5px rgba(83, 105, 199, 0.5), 0 1px 15px rgba(0, 0, 0, 0.5); border-radius: 60px;">&nbsp;&nbsp;</span>`;
-		$('lista').appendChild(li);
+		ul.appendChild(li);
 	});
+	$('list').appendChild(ul);
 }
 
-deleteList = () =>{
-	var lista = $('lista');
-	for (let index = 0; index < lista.children.length; index++) {
-		lista.removeChild(lista.children[index]);
-	}
+function deleteList() {
+	$('list').innerHTML = '';
 }

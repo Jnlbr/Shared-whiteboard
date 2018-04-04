@@ -35,6 +35,19 @@ public class SessionHandler {
 			});
 		}
 	}
+	public void sendBroadcast(String message, String currentSession) {
+		synchronized (sessionTable) {
+			sessionTable.forEach(session -> {
+				if(currentSession != session.getId()) {
+					try {
+						session.getBasicRemote().sendText(message);
+					} catch(IOException e) {
+						e.printStackTrace();
+					}	
+				}
+			});
+		}
+	}
 	public boolean verifyColor(String color) {
 		for(Player player: players.values()) {
 			if(color.equals(player.getColor())) {

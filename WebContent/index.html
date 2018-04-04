@@ -35,27 +35,33 @@
 		</div>
 		<div class="d-inline-block">
 			<button type="button" class="btn btn-outline-primary col-md-12" onclick="connect()">Connect</button>
-			<br><br>
+			<br>
+			<br>
 			<button type="button" class="btn btn-outline-primary col-md-12 d-inline" onclick="closeWS()">Disconnect</button>
+		</div>
+		<div class="d-inline-block position-absolute ">
+			<button type="button" class="btn btn-outline-primary btn-block" onclick="clearBoard()">Clear Board</button>
+			<h4 class="font-weight-light display d-inline">Jugadores online:</h4>
+			<div id="list">
+			</div>
 		</div>
 	</div>
 	<br>
 	<div class="container-fluid">
 		<div class=" d-inline-block">
-			<canvas style="box-shadow: 0 1px 5px rgba(83, 105, 199, 0.12), 0 1px 15px rgba(0, 0, 0, 0.1);" id="canvas" width="1280" height="600"> </canvas>
+			<canvas style="position: absolute; box-shadow: 0 1px 5px rgba(83, 105, 199, 0.12), 0 1px 15px rgba(0, 0, 0, 0.1); z-index:101;" id="canvas" width="1280" height="600">
+			</canvas>
+			<canvas id="col" style="position: absolute; box-shadow: 0 1px 5px rgba(83, 105, 199, 0.12), 0 1px 15px rgba(0, 0, 0, 0.1); z-index:100" width="1280"
+				height="600">
+			</canvas>
 			<br>
-			<button type="button" class="btn btn-outline-primary btn-block" onclick="clearBoard()">Clear Board</button>
-		</div>
-		<div class="d-inline-block position-absolute ">
-			<h4 class="font-weight-light display d-inline">Jugadores online:</h4>
-			<ul id="lista" style="list-style-type: square;">
-			</ul>
 		</div>
 	</div>
-    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="node_modules/popper.js/dist/umd/popper.js"></script>
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="node_modules/popper.js/dist/umd/popper.js"></script>
 	<script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script type="text/javascript" src="scripts/App.js"></script>
 	<script type="text/javascript" src="scripts/jscolor.js"></script>
 </body>
+
 </html>

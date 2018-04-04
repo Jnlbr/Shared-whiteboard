@@ -19,7 +19,7 @@ public class Playground {
 	
 	@OnMessage
 	public void onMessage (String msg, Session session) throws IOException {		
-		sessionHandler.sendMessage(msg);
+		sessionHandler.sendBroadcast(msg, session.getId());
 	}
 
 	@OnOpen
