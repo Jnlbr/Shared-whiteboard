@@ -55,7 +55,10 @@ function connect() {
 	// Init
 	color = getColor();
 	username = getUsername();
-	ws = new WebSocket('ws://localhost:8080/ArrozConLeche/sharedBoard/' + username + '/' + color);
+	if(username == '') {		
+		return
+	}
+	ws = new WebSocket(`ws://${document.location.host}/ArrozConLeche/sharedBoard/${username}/${color}`);
 	cs.beginPath();
 
 	ws.onopen = (e) => {

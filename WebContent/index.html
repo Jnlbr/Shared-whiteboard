@@ -6,27 +6,12 @@
 	<link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
 	<title>Shared WhiteBoard</title>
 	<style>
-		/* .item1 {
-			grid-area:header;
-		}
-		.item2 {
-			grid-area:list;
-		}
-		.item3 {
-			grid-area:main;
-		} */
-
-		.grid-container {
-			display: grid;
-			grid-template-columns: 50% 50%;
-			grid-template-rows: auto;
-
-		}
+		
 	</style>
 </head>
 
 <body class="bg-light">
-	<div class="item1 container-fluid" style="width: 32%;">
+	<div class="item1 container-fluid" style="width: 40%;">
 		<br>
 		<div class="d-inline-block">
 			<input type="text" class="form-control d-inline" id="username" placeholder="Username">
@@ -37,11 +22,10 @@
 			<button type="button" class="btn btn-outline-primary col-md-12" onclick="connect()">Connect</button>
 			<br>
 			<br>
-			<button type="button" class="btn btn-outline-primary col-md-12 d-inline" onclick="closeWS()">Disconnect</button>
+			<button type="button" class="btn btn-outline-danger col-md-12 d-inline" onclick="closeWS()">Disconnect</button>
 		</div>
-		<div class="d-inline-block position-absolute ">
-			<button type="button" class="btn btn-outline-primary btn-block" onclick="clearBoard()">Clear Board</button>
-			<h4 class="font-weight-light display d-inline">Jugadores online:</h4>
+		<div class="d-inline-block" style="position: absolute; left:1350px; top:160px;">
+			<h4 class="font-weight-light display">Jugadores online:</h4>
 			<div id="list">
 			</div>
 		</div>
@@ -54,7 +38,7 @@
 			<canvas id="col" style="position: absolute; box-shadow: 0 1px 5px rgba(83, 105, 199, 0.12), 0 1px 15px rgba(0, 0, 0, 0.1); z-index:100" width="1280"
 				height="600">
 			</canvas>
-			<br>
+			<button type="button" class="btn btn-outline-primary btn-block" onclick="clearBoard()" style="position: absolute; top:800px; width:1280px;">Clear Board</button>
 		</div>
 	</div>
 	<script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
@@ -64,4 +48,4 @@
 	<script type="text/javascript" src="scripts/jscolor.js"></script>
 </body>
 
-</html>
+</html>	
