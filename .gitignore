@@ -1,0 +1,7 @@
+/.metadata/
+
+/WebContent/node_modules
+.classpath
+.project
+/.settings/
+/build
